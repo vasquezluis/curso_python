@@ -1,0 +1,22 @@
+{% extends 'miapp/layout.html' %}
+
+<!-- Titulo de la pagina con block title -->
+{%block title %} {{title}} {% endblock %}
+
+<!-- Para incluir bloque de contenido -->
+{% block content %}
+
+    <!-- Heredar contenido de la layout original -->
+    {{ block.super }}
+
+    <h1 class="title"> {{title}} </h1>
+    <h3> Soy Luis Vasquez </h3>
+
+    <h3> Listado de paises </h3>
+    <ul>
+        {% for country in countries %}
+            <li> {{ country }} </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

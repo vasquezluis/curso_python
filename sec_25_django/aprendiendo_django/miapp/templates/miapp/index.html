@@ -1,0 +1,33 @@
+<!-- Para heredar la plantilla layout -->
+{% extends 'miapp/layout.html' %}
+
+<!-- Titulo de la pagina con block title -->
+{% block title %} {{title}} {% endblock %}
+
+<!-- Para incluir bloque de contenido -->
+{% block content %}
+
+    {% comment %} Esto es un comentario con django {% endcomment %}
+
+    <h1 class="title">{{title}}</h1>
+
+    {% if nombre  == 'Luis Vasquez' %}
+        <p>{{nombre}}</p>
+    {% else %}
+        <strong>El nombre no existe o no coincide</strong>
+    {% endif %}
+
+    <h3> Listado de lenguajes de programacion </h3>
+    <ul class="lenguajes-list">
+        {% for lenguaje in lenguajes %}
+            {% comment %} forloop.first -> devuelve (bool) el primer valor de la lista {% endcomment %}
+            <li> {{ forloop.counter0 }}. {{lenguaje}} </li>
+        {% comment %} empty para comprobar que la lista no este vacia  {% endcomment %}
+        {% empty %}
+            <strong> NO HAY LENGUAJES QUE MOSTRAR </strong>
+        {% endfor %}
+    </ul>
+
+    {% include 'miapp/fecha_actual.html' with saludo="Saludo desde plantilla:" %}
+
+{% endblock %}

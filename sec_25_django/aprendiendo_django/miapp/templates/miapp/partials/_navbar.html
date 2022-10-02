@@ -1,0 +1,34 @@
+{% load static %}
+<header>
+    <div id="logotipo">
+        <!-- Logo Django -->
+        <img src="{% static 'images/logo.png' %}" alt="Logo">
+        <h1>Sitio web con Django</h1>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li>
+            <a href="{% url 'index' %}"> Inicio </a>
+        </li>
+        <li>
+            <a href="{% url 'hola_mundo' %}"> Hola mundo </a>
+        </li>
+        <li>
+            <a href="{% url 'pagina' %}"> Pagina de pruebas </a>
+        </li>
+        <li>
+            <a href="{% url 'contacto' nombre='Luis' apellidos='Vasquez' %}"> Contacto </a>
+        </li>
+        <li>
+            <a href="{% url 'blog' %}"> Blog </a>
+        </li>
+    </ul>
+</nav>
+
+<div class="barra">
+    <span class="esquina-izquierda"></span>
+    <span class="relleno-barra"></span>
+    <span class="esquina-derecha"></span>
+</div>
