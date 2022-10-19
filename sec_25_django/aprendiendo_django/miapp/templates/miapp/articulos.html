@@ -1,0 +1,34 @@
+{% extends 'miapp/layout.html' %}
+
+{% block title %} Articulos {% endblock %}
+
+{% block content %}
+
+<h1 class="title"> Listado de articulos </h1>
+
+<ul>
+  {% for articulo in articulos %}
+    <li> 
+      <h4>{{ articulo.id }} {{ articulo.title }}</h4>
+      <span>{{articulo.created_at}}</span>
+
+      <h3>{{ articulo.public }}</h3>
+
+      {% if aticulo.plublic %}
+        <strong>Publicado</strong>
+      {% else %}
+        <strong>Privado</strong>
+      {% endif %}
+
+      <p>
+        {{ articulo.content }}
+        <br>
+        <a href="{% url 'borrar' articulo.id %}">Eliminar</a>
+      </p>
+      
+      <br>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

@@ -158,3 +158,32 @@ ejecutar en base de datos -> python manage.py migrate
 # actualizar estrucutra de bdd
 creacion migracion -> python manage.py makemigrations 
 creacion migracion a sql -> python manage.py sqlmigrate miapp numero_migracion
+
+# guardar registros usando parametros de la url
+- obtener datos desde la url -> en views
+- crear variable con los parametros
+	- articulo = Articulo(title = tile...)
+- guardar variable en la BdD
+	- articulo.save()
+
+# obtener elementos de la BdD
+- usar Try Except
+- usar modelo
+	- artiulo = Articulo.objects.get(estructura where)
+
+# actualizar registro
+- obtener articulo mediante id desde la url
+
+# enlistar todos los articulos
+articulos = Article.objects.all()
+articulos = Article.objects.order_by('id')[:3] # limite
+
+# borrar elementos
+en views -> articulo = Article.objects.get(pk=id) # obtener id en funcion
+articulo.delete()
+return redirect('articulos')
+	en html -> url 'borrar' articulo.id
+
+
+# condiciones - filtros - lookups
+articulo = Article.objects.filter(id__gte=4, title__contains('articulo'))
