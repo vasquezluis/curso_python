@@ -1,0 +1,25 @@
+{% extends 'miapp/layout.html' %}
+
+<!-- cargar los filtros-->
+{% load filters %}
+
+<!-- Titulo de la pagina con block title -->
+{%block title %} Formularios en DJango {% endblock %}
+
+<!-- Para incluir bloque de contenido -->
+{% block content %}
+
+<h1 class="title">Formularios en Django</h1>
+
+<form action="" method="POST">
+  
+  <!-- Para seguridad del metodo POST -->
+  {% csrf_token %}
+  
+  {{ form.as_p }}
+
+  <input type="submit" value="Guardar">
+
+</form>
+
+{% endblock %}

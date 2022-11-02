@@ -1,6 +1,10 @@
+from tkinter.tix import Form
 from django.shortcuts import render, redirect, HttpResponse
+from django.urls import is_valid_path
 from .models import Article
 from django.db.models import Q
+
+from miapp.forms import FormArticle
 
 # Create your views here.
 
@@ -110,7 +114,7 @@ def editar_articulo(request, id):
 def articulos(request):
 
     # aplicar condicion y limite
-    articulos = Article.objects.all().order_by('-id')
+    articulos = Article.objects.all().order_by("-id")
 
     """
     # utilizar lookup para filtros __
@@ -159,3 +163,33 @@ def save_article(request):
 def create_article(request):
 
     return render(request, "miapp/create_article.html")
+
+
+# forms con clases
+def create_full_article(request):
+
+    if request.method == "POST":
+
+        formulario = FormArticle(request.POST)
+
+        if formulario.is_valid():
+
+            data_form = formulario.cleaned_data
+
+            title = data_form.get("title")
+            content = data_form["content"]
+            public = data_form["public"]
+
+            articulo = Article(title=title, content=content, public=public)
+
+            articulo.save()
+
+            return redirect('articulos')
+
+            # return HttpResponse(articulo.title + " " + articulo.content + " " + str(articulo.public))
+
+    else:
+
+        formulario = FormArticle()
+
+    return render(request, "miapp/create_full_article.html", {"form": formulario})
