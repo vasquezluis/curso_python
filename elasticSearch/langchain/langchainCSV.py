@@ -5,7 +5,7 @@ from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
 from langchain.agents.agent_types import AgentType
 
-os.environ['OPENAI_API_KEY'] = "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"
+os.environ['OPENAI_API_KEY'] = ""
 
 # config
 #agent = create_csv_agent(
