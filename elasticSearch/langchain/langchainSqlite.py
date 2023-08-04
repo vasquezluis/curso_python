@@ -7,7 +7,7 @@ from langchain.agents import AgentExecutor
 from langchain.agents.agent_types import AgentType
 from langchain.sql_database import SQLDatabase
 
-os.environ['OPENAI_API_KEY'] = "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"
+os.environ['OPENAI_API_KEY'] = ""
 
 # get the db
 db = SQLDatabase.from_uri("sqlite:///./Chinook.db")
