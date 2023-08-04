@@ -8,7 +8,7 @@ from langchain.agents.agent_types import AgentType
 
 def lambda_handler(event, context):
     # Set the OpenAI API key
-    os.environ['OPENAI_API_KEY'] = "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"
+    os.environ['OPENAI_API_KEY'] = ""
 
     # Download the file from Google Drive and save it to a temporary location
     file_url = "https://drive.google.com/uc?id=12Lqkr99-etYXv2PbnHOMPSbQ0ixEglDj"
