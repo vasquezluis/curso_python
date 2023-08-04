@@ -6,7 +6,7 @@ const client = new Client({
     apiKey: {
       // API key ID and secret
       id: "ee80a4b757ac4cf7aa931f2dfd04bc67",
-      api_key: "aTF5aVFZa0J6TG5vMHF2a0oybzI6bXpoVFhMUjVUZlMyZVVDZzRDTVRUdw==",
+      api_key: "",
     },
   },
 });
