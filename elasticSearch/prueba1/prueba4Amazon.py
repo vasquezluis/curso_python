@@ -8,7 +8,7 @@ from elasticsearch import Elasticsearch
 # cloud_user - Elasticsearch Cluster User
 # cloud_pass - Elasticsearch User Password
 
-openai.api_key = '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'
+openai.api_key = ''
 model = "gpt-3.5-turbo-0301"
 
 # Connect to Elastic Cloud cluster
@@ -18,7 +18,7 @@ def es_connect(cid, user, passwd):
 
 # Search ElasticSearch index and return body and URL of the result
 def search(query_text):
-    cid = 'ElasticChat_GPT:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvOjQ0MyRmZmIxNmFlM2EyODY0YTRkYjg4N2ViODExM2VhMDFjOCQ2YTlmNDkwODc2ZDY0OGQ5YjA5M2Q0ZWUxNjg0ZTYyYw=='
+    cid = ''
     cp = 'vH1jyVgDrKuMDreUJkzwCjh7'
     cu = 'elastic'
     es = es_connect(cid, cu, cp)
