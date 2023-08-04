@@ -2,7 +2,7 @@ const { Client } = require("@elastic/elasticsearch");
 const openai = require("openai");
 
 // Set OpenAI API Key
-openai.apiKey = "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";
+openai.apiKey = "";
 
 const model = "gpt-3.5-turbo-0301";
 
@@ -23,7 +23,7 @@ const es_connect = async (cloudId, user, password) => {
 // Search Elasticsearch index and return body and URL of the result
 const search = async (queryText) => {
   const cloudId =
-    "ElasticChat_GPT:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvOjQ0MyRlZTgwYTRiNzU3YWM0Y2Y3YWE5MzFmMmRmZDA0YmM2NyQ2MGRlYjZiNDBlZTQ0N2I2OWU4MzJhZTRlNDg4M2JiZA==";
+    "";
   const password = "mebcfCSLJiQdfMBlAT9NhwJt";
   const username = "elastic";
 
