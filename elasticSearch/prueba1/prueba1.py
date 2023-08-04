@@ -29,7 +29,7 @@ def es_connect(cid, user, passwd):
 
 # Search ElasticSearch index and return body and URL of the result
 def search(query_text):
-    cid = 'ElasticChat_GPT:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvOjQ0MyRlZTgwYTRiNzU3YWM0Y2Y3YWE5MzFmMmRmZDA0YmM2NyQ2MGRlYjZiNDBlZTQ0N2I2OWU4MzJhZTRlNDg4M2JiZA=='
+    cid = ''
     cp = 'mebcfCSLJiQdfMBlAT9NhwJt'
     cu = 'elastic'
     es = es_connect(cid, cu, cp)
