@@ -19,7 +19,7 @@ from elasticsearch import Elasticsearch
 # cloud_pass - Elasticsearch User Password
 
 # openai.api_key = os.environ['openai_api']
-openai.api_key = ""
+openai.api_key = "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"
 model = "gpt-3.5-turbo-0301"
 
 # Connect to Elastic Cloud cluster
@@ -29,8 +29,8 @@ def es_connect(cid, user, passwd):
 
 # Search ElasticSearch index and return body and URL of the result
 def search(query_text):
-    cid = ''
-    cp = 'c3AgxI1kvDejS9TXt5aBug7m'
+    cid = 'ElasticChat_GPT:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvOjQ0MyRlZTgwYTRiNzU3YWM0Y2Y3YWE5MzFmMmRmZDA0YmM2NyQ2MGRlYjZiNDBlZTQ0N2I2OWU4MzJhZTRlNDg4M2JiZA=='
+    cp = 'mebcfCSLJiQdfMBlAT9NhwJt'
     cu = 'elastic'
     es = es_connect(cid, cu, cp)
 
@@ -75,7 +75,6 @@ def search(query_text):
                      size=1,
                      source=False)
 
-    print('resp', resp)
     body = resp['hits']['hits'][0]['fields']['body_content'][0]
     url = resp['hits']['hits'][0]['fields']['url'][0]
     return body, url
@@ -107,7 +106,7 @@ def chat_gpt(prompt, model="gpt-3.5-turbo", max_tokens=1024, max_context_tokens=
     return response["choices"][0]["message"]["content"]
 
 
-st.title("ElasticDocs GPT")
+st.title("Elastic GPT")
 
 # Main chat form
 with st.form("chat_form"):

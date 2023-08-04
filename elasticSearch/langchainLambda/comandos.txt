@@ -1,0 +1,11 @@
+# instalar aws cli
+  pip install awscli
+
+# config aws cli
+  aws configure
+
+# create a user/role in aws console
+  Type AWSLambdaBasicExecutionRole
+
+# create a .zip file with modules and the main file
+ lambda_function.py -> lambda_handler
