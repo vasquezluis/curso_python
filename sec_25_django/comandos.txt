@@ -1,0 +1,189 @@
+# comandos para usar django
+
+##################### SECCION 25 ###########################
+
+# crear entorno virtual
+virtualenv 'nombre'
+
+# instalar django
+pip install Django==3.0.5
+
+# crear proyecto con django
+django-admin startproject 'nombre_proyecto'
+
+# ver ayuda de manage.py
+python3 manage.py help
+
+# migrar proyecto para que funciones
+python3 manage.py migrate
+
+# arrancar servidor
+python3 manage.py runserver
+
+# crear app para django
+python3 manage.py startapp 'nombre_app'
+
+
+##################### SECCION 26 ############################
+
+# crear vistas y rutas
+- Crear vista en views en la carpeta de la app
+    * importar HttpResponse
+    * def hola(request)
+      * return HttpResponse()
+- importar modulo views en urls del paquete general
+- crear un path para la view
+    * path('hola/', views.hola, name='hola')
+
+# navegacion entre paginas
+- layout (html -> a) + html de la pagina
+     * HttpResponse(layout + html)
+
+# parametros en rutas
+- dentro de las urls
+     * path('contacto/<str:nombre>', ...)
+- dentro de las vistas
+     * def contacto(request, nombre):
+
+# parametros opcionales
+- agregar los parametros opcionales en las views
+- agregar casos en las urls
+
+# redirecciones
+- agregar posibilidad en urls
+- import redirect en django.shortcuts
+
+
+##################### SECCION 27 ###########################
+
+# usar return render(request, 'template') para usar templates en la carpeta templates
+-> incluir la app en settings
+
+# incluir contenido por defecto del layout padre
+{{ block.super }}
+
+# titulos personalizados
+incluir en el layout padre {% block title %} {% endblock %} -> usarlo en los templates
+
+# incluir css estatico
+crear carpeta static/css -> en miapp
+/* estilo en layout
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}?{% now 'U' %}">
+
+
+##################### SECCION 29 ############################
+
+# comentarios en templates
+{% comment %} Esto es un comentario con django {% endcomment %}
+
+# pasar datos desde vistas a templates
+interpolar datos -> pasar variable de un metodo a una template
+views -> return render(request, 'miapp/index.html', {
+            'title': 'Inicio',
+            'mi_variable': html
+        })
+html -> {{title}} {{mi_variable}}
+
+# condicionales en templates
+    {% if nombre %}
+        <p>{{nombre}}</p>
+    {% else %}
+        <strong>El nombre no existe</strong>
+    {% endif%}
+
+# bucles en templates
+    <ul>
+        {% for lenguaje in lenguajes %}
+            <li> {{lenguaje}} </li>
+        {% endfor %}
+    </ul>
+
+# adiciones a bucles
+{{ forloop.counter0}} -> devuelve la cantidad de elementos empezando en 0
+{% empty%} -> devuelve si una lista esta vacia
+
+# filtro en if
+{% if year|divisibleby:2 == True %} -> modulo = if year % 2 == 0
+
+# incluir templates dentro de otra template
+{% include 'miapp/fecha_actual.html' %}
+
+# enviar variable con include
+{% include 'miapp/fecha_actual.html' with saludo="Hola desde plantilla" %}
+# heredar solo una variable
+{% include 'miapp/fecha_actual.html' with saludo="Hola desde plantilla" only %}
+
+# url en template
+<a href="{% url 'ruta' %}"> Inicio </a> -> pasar url por nombre de la ruta
+
+# pasar parametros por la url
+<a href="{% url 'ruta' 'Luis' 'Vasquez' %}"> Inicio </a> -> 
+
+# fechas
+{% now "d/m/Y h:m:s" %}
+
+
+####################### SECCION 30 ######################
+
+# filtro en plantilla
+{{ "Creado por" | cut:" " }} -> quitar todos los espacios
+{{ texto | default:"hola mundo"}} -> agregar contenido a una variable cuando no tiene contenido
+{{lista | first/last}} -> devuelve el primer/ultimo elemento de la lista
+{{lista | join:","}} -> imprimir lista formateada con comas
+{{lista | length}} -> devuelve el tama;o de la lista
+{{texto | upper/lower}} -> devuelve texto en mayusculas/minusculas
+{{lista | random}} -> devuelve un elemento random de la lista
+
+# crear filtros personalizados
+-> crear carpeta templatetags
+-> crear archivo para paquete -> __init__.py
+-> crear archivo de filtro -> filters.py
+
+
+####################### SECCION 31 #######################
+
+# instalar Pylint
+pip install pylint-django
+-> configurar pylint path en vsc
+
+# definir modelos a travez de clases en models.py
+-> crear clase con herencia de models.Model con la estructura de la tabla
+
+# crear tabla a partir de modelos
+creacion migracion -> python manage.py makemigrations
+creacion migracion a sql -> python manage.py sqlmigrate miapp numero_migracion
+ejecutar en base de datos -> python manage.py migrate
+
+# actualizar estrucutra de bdd
+creacion migracion -> python manage.py makemigrations 
+creacion migracion a sql -> python manage.py sqlmigrate miapp numero_migracion
+
+# guardar registros usando parametros de la url
+- obtener datos desde la url -> en views
+- crear variable con los parametros
+	- articulo = Articulo(title = tile...)
+- guardar variable en la BdD
+	- articulo.save()
+
+# obtener elementos de la BdD
+- usar Try Except
+- usar modelo
+	- artiulo = Articulo.objects.get(estructura where)
+
+# actualizar registro
+- obtener articulo mediante id desde la url
+
+# enlistar todos los articulos
+articulos = Article.objects.all()
+articulos = Article.objects.order_by('id')[:3] # limite
+
+# borrar elementos
+en views -> articulo = Article.objects.get(pk=id) # obtener id en funcion
+articulo.delete()
+return redirect('articulos')
+	en html -> url 'borrar' articulo.id
+
+
+# condiciones - filtros - lookups
+articulo = Article.objects.filter(id__gte=4, title__contains('articulo'))

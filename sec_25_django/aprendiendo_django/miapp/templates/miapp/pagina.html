@@ -1,0 +1,29 @@
+
+{% extends 'miapp/layout.html' %}
+
+<!-- cargar los filtros-->
+{% load filters %}
+
+<!-- Titulo de la pagina con block title -->
+{%block title %} Pagina de pagina {% endblock %}
+
+<!-- Para incluir bloque de contenido -->
+{% block content %}
+
+    <h1 class="title"> Pagina de mi web</h1>
+    <p> {{ "Creado por Luis Vasquez" | cut:" " }} </p>
+
+    <p> {{texto | default:"No hay nada"}} </p>
+
+    <p> {{lista | join:', '}} </p>
+    
+    <p> {{"Hola Mundo Que Hace" | upper}} </p>
+    
+    <p> {{lista | random}} </p>
+
+    <p> {{"<h1> Hola </h1> <strong> mundo </strong>" | striptags | wordcount}} </p>
+
+    {% comment %} Filtros {% endcomment %}
+    {{"Luis" | saludo | safe}}
+
+{% endblock %}
