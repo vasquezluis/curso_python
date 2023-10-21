@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@elastic/elasticsearch": "^7.17.11-patch.1",
-    "elasticsearch": "^16.7.3",
-    "openai": "^3.3.0"
-  }
-}
